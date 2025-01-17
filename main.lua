@@ -18,11 +18,11 @@ local running_as = {[arg[2]] = true}
 
 local vertex_attribute_map = {
 	mesh = {
-		{'vertexP', 'float', 3},
+		{'VertexPosition', 'float', 3},
 		{'vertexN', 'float', 3}
 	}; 
 	light = {
-		{'vertexP', 'float', 3}
+		{'VertexPosition', 'float', 3}
 	}; 
 }
 
@@ -3347,7 +3347,7 @@ end
 
 
 if running_as.server then
-	serve_place('bowmen2.rbxlx', 'localhost', 57005)
+	serve_place('bowmen2.rbxlx', '*', 57005)
 elseif running_as.client then
 	join_place('localhost', 57005)
 end

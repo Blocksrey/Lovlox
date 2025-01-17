@@ -10,14 +10,13 @@ varying vec3 worldN;
 	uniform vec4 objectO;
 	uniform vec3 objectS;
 
-	attribute vec3 vertexP;
 	attribute vec3 vertexN;
 
 	vec3 qrot(vec4 q, vec3 v) { return v + 2*cross(cross(v, q.xyz) - q.w*v, q.xyz); }
 	vec3 qtor(vec4 q, vec3 v) { return v + 2*cross(cross(v, q.xyz) + q.w*v, q.xyz); }
 
 	vec4 position(mat4 _, vec4 __) {
-		worldP = objectP + qrot(objectO, objectS*vertexP);
+		worldP = objectP + qrot(objectO, objectS*VertexPosition.xyz);
 		worldN = qrot(objectO, vertexN);
 
 		return cameraT*vec4(qtor(cameraO, worldP - cameraP), 1);
